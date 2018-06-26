@@ -74,10 +74,14 @@
 
   // Your custom JavaScript goes here
   $(document).ready(function () {
+
+    //Pul clonlama kodları başlanğıc
     $("body").on("click", ".addMoney", function () {
 
       var newMoney = $(".money:first").clone();
       $(".money:last").after(newMoney);
+
+      //sweetalert ile ekrana verilen mesaj kodları
       swal({
         type: 'success',
         title: 'Good job!',
@@ -85,6 +89,66 @@
         timer: 1000
       });
     });
+    // Pul clonlama kodları /
+
+
+    // input focus oldukda label deyişiklik kodları
+    $('input,select').on('blur', function () {
+      if (!$(this).val() == "") {
+        $(this).next().addClass('stay');
+      } else {
+        $(this).next().removeClass('stay');
+      }
+    });
+    // input focus oldukda label deyişiklik kodları/
+
+
+
+    // Telefon nömresi üçün mask
+    $('.phone').on('focus', function () {
+      $('.phone').mask('(000) 000-00-00', {placeholder: "(___) ___-__-__"});
+    });
+    $('.phone').on('blur', function () {
+      if ($(this).val() == "") {
+        $('.phone').removeAttr('placeholder').unmask();
+      }
+    });
+    // Telefon nömresi üçün mask/
+
+    // Kredi kartı üçün mask
+    $('#creditCard').on('focus', function () {
+      $('#creditCard').mask('0000-0000-0000-0000', {placeholder: "____-____-____-____"});
+    });
+    $('#creditCard').on('blur', function () {
+      if ($(this).val() == "") {
+        $('#creditCard').removeAttr('placeholder').unmask();
+      }
+    });
+    //Kredi kartı üçün mask/
+
+    // securityCode üçün mask
+    $('#securityCode').on('focus', function () {
+      $('#securityCode').mask('000', {placeholder: "- - - "});
+    });
+    $('#securityCode').on('blur', function () {
+      if ($(this).val() == "") {
+        $('#securityCode').removeAttr('placeholder').unmask();
+      }
+    });
+    //securityCode üçün mask/
+
+    // expDate üçün mask
+    $('#expDate').on('focus', function () {
+      $('#expDate').mask('00/00', {placeholder: "MM/YY"});
+    });
+    $('#expDate').on('blur', function () {
+      if ($(this).val() == "") {
+        $('#expDate').removeAttr('placeholder').unmask();
+      }
+    });
+    //expDate üçün mask/
+
+
 
   });
 
